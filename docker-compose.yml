@@ -14,7 +14,7 @@ services:
       - /home/di/Desenvolvimento/Docker/pg-data:/var/lib/postgresql/data
     networks:
       - postgres-pgadmin-network
-      - webnet
+      - web-network
 
   pgadmin:
     image: dpage/pgadmin4
@@ -37,7 +37,7 @@ services:
       MONGO_INITDB_ROOT_USERNAME: ${MONGO_USER}
       MONGO_INITDB_ROOT_PASSWORD: ${MONGO_PASSWORD}
     networks:
-      - webnet
+      - web-network
     container_name: 'mongo'
     restart: always
 
@@ -45,14 +45,14 @@ services:
     image: redis:lastest
     container_name: 'redis'
     networks:
-      - webnet
+      - web-network
 
   nestapi:
     image: node:latest
     ports:
       - ${SERVER_PORT}:${SERVER_PORT}
     networks:
-      - webnet
+      - web-network
     container_name: 'nest_api'
     restart: always
     depends_on:
@@ -74,5 +74,5 @@ services:
   networks:
     postgres-pgadmin-network:
       driver: bridge
-    webnet:
+    web-network:
       driver: bridge
