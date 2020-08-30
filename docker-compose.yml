@@ -13,7 +13,7 @@ services:
     volumes:
       - /home/di/Desenvolvimento/Docker/pg-data:/var/lib/postgresql/data
     networks:
-      - pgsql-pgadmin-network
+      - postgres-pgadmin-network
       - webnet
 
   pgadmin:
@@ -26,7 +26,7 @@ services:
     depends_on:
       - pgsql
     networks:
-      - pgsql-pgadmin-network
+      - postgres-pgadmin-network
 
   mongodb:
     image: mongo:latest
@@ -72,7 +72,7 @@ services:
         max-file: '5'
   
   networks:
-    pgsql-pgadmin-network:
+    postgres-pgadmin-network:
       driver: bridge
     webnet:
       driver: bridge
