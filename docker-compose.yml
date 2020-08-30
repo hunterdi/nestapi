@@ -44,7 +44,7 @@ services:
   redis:
     image: redis:lastest
     container_name: 'redis'
-    network:
+    networks:
       - webnet
 
   nestapi:
